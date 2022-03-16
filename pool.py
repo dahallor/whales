@@ -91,18 +91,3 @@ class PoolingLayer():
                     k += 1
         return gradientOut
 
-
-if __name__ == '__main__':
-    PL = PoolingLayer()
-    test_array = np.array([
-    [1, 2, 3, 4, 5, 6],
-    [6, 5, 4, 3, 2, 1],
-    [1, 3, 5, 7, 9, 11],
-    [2, 4, 6, 8, 10, 12],
-    [1, 1, 1, 1, 1, 1],
-    [9, 9, 9, 9, 9, 9]
-    ])
-
-    #PL.max_pool(test_array)
-    PL.avg_pool(test_array)
-    PL.backprop_pooling(PL.pool)
