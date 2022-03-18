@@ -2,13 +2,12 @@ import numpy as np
 
 class DropOutLayer:
     def __init__(self, p, input_size):
-        u1 = np.random.binomial(1,p, size =input_size)/p
+        self.u1 = np.random.binomial(1,p, size =input_size)/p
         
+    def forward(self, x):
+        return x*self.u1
         
-    def forward(x):
-        return x*u1
+    def backforward(self, grad):
         
-    def backforward(grad):
-        
-        return grad*u1
+        return grad*self.u1
     

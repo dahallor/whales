@@ -1,5 +1,6 @@
 import numpy as np
 import pdb
+from layers import Layer
 
 '''
 Convolutional layer. Forward and back-propegates image data.
@@ -7,7 +8,7 @@ Convolutional layer. Forward and back-propegates image data.
 Note that backprop may bit a bit busted RN. It's a work in progress.
 '''
 
-class ConvolutionalLayer():
+class ConvolutionalLayer(Layer):
 	def __init__(self, kernel_size=3, kernel=None, learning_rate=0.001):
 		if kernel is None:
 			kernel = np.random.rand((kernel_size, kernel_size)) * 10**-4
@@ -18,7 +19,7 @@ class ConvolutionalLayer():
 
 		self.prevIn = None
 
-	def convolve(self, image, num_channels=1 ,stride=1, zero_pad=True):
+	def forward(self, image, num_channels=1 ,stride=1, zero_pad=True):
 		self.prevIn = image
 		m = kernel.shape[0]
 
@@ -48,7 +49,7 @@ class ConvolutionalLayer():
 			
 		return output
 
-	def backprop(self, grad_in):
+	def backward(self, grad_in):
 		m = kernel.shape[0]
 
 		output = np.zeros((m, m))

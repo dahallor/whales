@@ -57,8 +57,6 @@ class PoolingLayer():
         self.size_pooled.append(image.shape[1])
         return self.pool
 
-
-
     def max_pool(self, image):
         pool_type = "max"
         self.pool_type = pool_type
